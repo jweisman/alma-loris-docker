@@ -18,7 +18,8 @@ The docker image is based on the following components:
 
 The Alma Resolver (`AlmaS3Resolver`) includes the following logic:
 * Receives as the identifier [JWT token](http://jwt.io/) 
-** The payload includes the following properties:
+  * The token is `RS256` signed with an Alma private key and validated with with the public key in `keyfile-pub.pem`.
+  * The payload includes the following properties:
 ```
     {
         "region": region,
@@ -26,7 +27,6 @@ The Alma Resolver (`AlmaS3Resolver`) includes the following logic:
         "key": filename
     }
 ```
-** The token is `RS256` signed with an Alma private key and validated with with the public key in `keyfile-pub.pem`.
 * If the file is not in cache it is downloaded from the Alma S3 storage
 
 ## AWS Deployment
